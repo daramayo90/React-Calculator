@@ -19,6 +19,7 @@ function App() {
   
       } else if (!currentOperation && !(val === "." && number1.includes("."))) {
         setNumber1(number1 + val);
+        
       }
     }
   }
