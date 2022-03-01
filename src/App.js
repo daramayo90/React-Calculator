@@ -19,13 +19,23 @@ function App() {
   
       } else if (!currentOperation && !(val === "." && number1.includes("."))) {
         setNumber1(number1 + val);
-        
       }
+
+    } else {
+      allClear();
+      console.log("hola")
+      setNumber1("" + val);
     }
   }
 
   function clickOperation(val) {
     if (!hasResult && !number2) {
+      setCurrentOperation(val);
+
+    } else {
+      setHasResult(false);
+      setNumber1(result);
+      setNumber2("");
       setCurrentOperation(val);
     }
   }
@@ -53,6 +63,29 @@ function App() {
           setHasResult(true);
           break;
       }
+
+    } else {
+      switch (currentOperation) {
+        case "+":
+          setResult(result + Number(number2));
+          setHasResult(true);
+          break;
+
+        case "-":
+          setResult(result - Number(number2));
+          setHasResult(true);
+          break;
+
+        case "*":
+          setResult(result * Number(number2));
+          setHasResult(true);
+          break;
+
+        case "/":
+          setResult(result / Number(number2));
+          setHasResult(true);
+          break;
+      }
     }
   }
 
@@ -60,7 +93,8 @@ function App() {
     if (!hasResult) {
       if (!currentOperation) {
         setNumber1(number1.slice(0, -1))
-      }else {
+
+      } else {
         setNumber2(number2.slice(0, -1))
       }
     }
